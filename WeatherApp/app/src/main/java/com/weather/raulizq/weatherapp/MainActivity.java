@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -32,7 +34,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     ViewPagerAdapter adapter;
-    static String APPID = "5f41d5c4673172e37658a56d6877e712";
+    public static String APPID = "5f41d5c4673172e37658a56d6877e712";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }*/
         setContentView(R.layout.activity_main);
+        ActionBar actionBar = getSupportActionBar();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         //final TextView text = (TextView) findViewById(R.id.mylabel);
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
@@ -57,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-       Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(APPID,"Monterrey","MX");
+       Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(APPID,"Monterrey,mx");
        //Call<Data> call = ServiceGenerator.getApiService().getData();
         call.enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Response<Data> response) {
-                Log.e("onResponse: ", String.valueOf(response.body()));
+                Log.e("onResponse: ", String.valueOf(response.body().getName()));
                 //text.setText(response.body().getWeather().get(0).getDescription());
             }
 

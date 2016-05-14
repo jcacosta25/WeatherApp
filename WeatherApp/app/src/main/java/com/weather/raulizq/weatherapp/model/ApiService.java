@@ -14,5 +14,8 @@ import retrofit2.http.Query;
 public interface ApiService {
     //http://api.openweathermap.org/data/2.5/weather?appid=1ad7df190e16fac7c4816134f47f28f0&q=monterrey,mx
     @GET("weather")
-    Call<Data> getCurrentWeather(@Query("appid") String appid, @Query("city") String city, @Query("country") String country);
+    Call<Data> getCurrentWeather(@Query("appid") String appid, @Query("q") String city);
+
+    /*@GET("weather")
+    Call<Data> getData();*/
 }
