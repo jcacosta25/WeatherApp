@@ -13,7 +13,15 @@ public class Main {
     private Double tempMax;
     private Double seaLevel;
     private Double grndLevel;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Integer tempKf;
+
+    public Integer getTempKf() {
+        return tempKf;
+    }
+
+    public void setTempKf(Integer tempKf) {
+        this.tempKf = tempKf;
+    }
 
     /**
      * 
@@ -141,12 +149,5 @@ public class Main {
         this.grndLevel = grndLevel;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
 
 }

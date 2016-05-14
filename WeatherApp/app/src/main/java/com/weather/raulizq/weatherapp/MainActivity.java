@@ -51,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new TabFragment(),"Fragment1");
-        adapter.addFrag(new MultipleFragment(),"Fragment2");
-        adapter.addFrag(new TabFragment(),"Fragment3");
+        adapter.addFrag(new TabFragment(),"Current");
+        adapter.addFrag(new MultipleFragment(),"Forecast");
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         viewPager.setAdapter(adapter);

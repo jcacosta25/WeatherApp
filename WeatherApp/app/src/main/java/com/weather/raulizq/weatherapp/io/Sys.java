@@ -10,7 +10,16 @@ public class Sys {
     private String country;
     private Integer sunrise;
     private Integer sunset;
+    private Integer population;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Integer population) {
+        this.population = population;
+    }
 
     /**
      * 

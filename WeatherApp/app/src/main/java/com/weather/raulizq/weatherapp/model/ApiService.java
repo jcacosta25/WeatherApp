@@ -16,6 +16,6 @@ public interface ApiService {
     @GET("weather")
     Call<Data> getCurrentWeather(@Query("appid") String appid, @Query("q") String city);
 
-    /*@GET("weather")
-    Call<Data> getData();*/
+    @GET("forecast")
+    Call<Data> getForecast(@Query("appid") String appid, @Query("q") String city,@Query("units") String unit);
 }

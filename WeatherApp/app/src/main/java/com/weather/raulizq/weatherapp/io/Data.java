@@ -18,8 +18,39 @@ public class Data {
     private Sys sys;
     private Integer id;
     private String name;
-    private Integer cod;
+    private City city;
+    private String cod;
+    private Double message;
+    private Integer cnt;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
+
+    public Double getMessage() {
+        return message;
+    }
+
+    public void setMessage(Double message) {
+        this.message = message;
+    }
+
+    public Integer getCnt() {
+        return cnt;
+    }
+
+    public void setCnt(Integer cnt) {
+        this.cnt = cnt;
+    }
 
     /**
      * 
@@ -206,18 +237,10 @@ public class Data {
      * @return
      *     The cod
      */
-    public Integer getCod() {
+    public String getCod() {
         return cod;
     }
 
-    /**
-     * 
-     * @param cod
-     *     The cod
-     */
-    public void setCod(Integer cod) {
-        this.cod = cod;
-    }
 
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
