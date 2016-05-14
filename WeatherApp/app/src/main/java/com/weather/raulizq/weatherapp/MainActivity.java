@@ -3,11 +3,14 @@ package com.weather.raulizq.weatherapp;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
 
+import com.weather.raulizq.weatherapp.fragments.TabFragment;
 import com.weather.raulizq.weatherapp.io.Data;
 import com.weather.raulizq.weatherapp.model.ServiceGenerator;
 
@@ -27,6 +30,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    ViewPagerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +40,20 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }*/
         setContentView(R.layout.activity_main);
-        final TextView text = (TextView) findViewById(R.id.mylabel);
+        //final TextView text = (TextView) findViewById(R.id.mylabel);
+
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new TabFragment(),"Fragment1");
+        adapter.addFrag(new TabFragment(),"Fragment2");
+        adapter.addFrag(new TabFragment(),"Fragment3");
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        viewPager.setAdapter(adapter);
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
         //Call<Data> call = ServiceGenerator.getApiService().getData("1ad7df190e16fac7c4816134f47f28f0","London","UK");
         Call<Data> call = ServiceGenerator.getApiService().getData();
@@ -43,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response<Data> response) {
                 //Log.e("onResponse: ", response.body().getName());
-                text.setText(response.body().getName());
+                //text.setText(response.body().getWeather().get(0).getDescription());
             }
 
             @Override
@@ -103,8 +121,8 @@ class NetworkTask extends AsyncTask<AppCompatActivity, Integer, String> {
     }
 
     protected void onPostExecute(String result) {
-        TextView text = (TextView)layout.findViewById(R.id.mylabel);
-        text.setText(result);
+        //TextView text = (TextView)layout.findViewById(R.id.mylabel);
+        //text.setText(result);
         try {
             JSONObject reqJson = new JSONObject(result);
             System.out.println(((JSONObject) reqJson.get("coord")).get("lon"));
