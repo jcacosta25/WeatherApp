@@ -8,8 +8,9 @@ import retrofit2.Retrofit;
  * juank2acosta@gmail.com
  */
 public class ServiceGenerator {
-        private static final String BASE_URL = "http://demo2762479.mockable.io/";
-        private static ApiService API_SERVICE;
+    //private static final String BASE_URL = "http://demo2762479.mockable.io/";
+    private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    private static ApiService API_SERVICE;
 
         public static ApiService getApiService(){
             if(API_SERVICE == null){

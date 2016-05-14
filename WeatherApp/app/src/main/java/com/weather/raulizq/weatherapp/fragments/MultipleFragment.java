@@ -14,29 +14,17 @@ import com.weather.raulizq.weatherapp.R;
  * bbxmstudios
  * juan.acosta@bbxmstudios.com
  */
-public class TabFragment extends Fragment {
-    public static final String ARG_PAGE = "ARG_PAGE";
-
-    private int mPage;
-
-    public static TabFragment newInstance(int page) {
-        Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
-        TabFragment fragment = new TabFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class MultipleFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //mPage = getArguments().getInt(ARG_PAGE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.tab_fragment, container, false);
+        final View view = inflater.inflate(R.layout.multiple_fragment, container, false);
         return view;
     }
 }

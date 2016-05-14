@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 
+import com.weather.raulizq.weatherapp.fragments.MultipleFragment;
 import com.weather.raulizq.weatherapp.fragments.TabFragment;
 import com.weather.raulizq.weatherapp.io.Data;
 import com.weather.raulizq.weatherapp.model.ServiceGenerator;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     ViewPagerAdapter adapter;
+    static String APPID = "5f41d5c4673172e37658a56d6877e712";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new TabFragment(),"Fragment1");
-        adapter.addFrag(new TabFragment(),"Fragment2");
+        adapter.addFrag(new MultipleFragment(),"Fragment2");
         adapter.addFrag(new TabFragment(),"Fragment3");
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -55,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        //Call<Data> call = ServiceGenerator.getApiService().getData("1ad7df190e16fac7c4816134f47f28f0","London","UK");
-        Call<Data> call = ServiceGenerator.getApiService().getData();
+       Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(APPID,"Monterrey","MX");
+       //Call<Data> call = ServiceGenerator.getApiService().getData();
         call.enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Response<Data> response) {
-                //Log.e("onResponse: ", response.body().getName());
+                Log.e("onResponse: ", String.valueOf(response.body()));
                 //text.setText(response.body().getWeather().get(0).getDescription());
             }
 
