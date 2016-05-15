@@ -24,7 +24,7 @@ import retrofit2.Response;
  * bbxmstudios
  * juan.acosta@bbxmstudios.com
  */
-public class TabFragment extends Fragment {
+public class CurrentFragment extends Fragment {
 
     TextView city,pressure,humidity,wind1,wind2;
     ImageView condition;

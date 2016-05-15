@@ -2,14 +2,13 @@
 package com.weather.raulizq.weatherapp.io;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Data {
 
     private Coord coord;
     private List<Weather> weather = new ArrayList<Weather>();
+    private java.util.List<com.weather.raulizq.weatherapp.io.List> list = new ArrayList<com.weather.raulizq.weatherapp.io.List>();
     private String base;
     private Main main;
     private Wind wind;
@@ -22,7 +21,14 @@ public class Data {
     private String cod;
     private Double message;
     private Integer cnt;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public List<com.weather.raulizq.weatherapp.io.List> getList() {
+        return list;
+    }
+
+    public void setList(List<com.weather.raulizq.weatherapp.io.List> list) {
+        this.list = list;
+    }
 
     public City getCity() {
         return city;
@@ -239,15 +245,6 @@ public class Data {
      */
     public String getCod() {
         return cod;
-    }
-
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

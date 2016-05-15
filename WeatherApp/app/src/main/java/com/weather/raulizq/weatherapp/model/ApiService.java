@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 /**
  * Created by Juan C. Acosta on 5/7/2016.
- * juan.acosta@gmail.com
+ * juank2acosta@gmail.com
  */
 public interface ApiService {
     //http://api.openweathermap.org/data/2.5/weather?appid=1ad7df190e16fac7c4816134f47f28f0&q=monterrey,mx

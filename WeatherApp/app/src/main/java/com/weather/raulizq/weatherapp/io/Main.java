@@ -1,9 +1,6 @@
 
 package com.weather.raulizq.weatherapp.io;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
 
     private Double temp;

@@ -2,8 +2,8 @@ package com.weather.raulizq.weatherapp.io;
 
 /**
  * Created by Juan C. Acosta on 5/14/2016.
- * bbxmstudios
- * juan.acosta@bbxmstudios.com
+ *  juank2acosta@gmail.com
+ *  juank2acosta@gmail.com
  */
 public class Rain {
     private Double _3h;

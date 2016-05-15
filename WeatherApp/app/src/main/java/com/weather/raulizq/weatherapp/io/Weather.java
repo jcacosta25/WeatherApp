@@ -1,8 +1,6 @@
 
 package com.weather.raulizq.weatherapp.io;
 
-import java.util.Map;
-
 public class Weather {
 
     private Integer id;

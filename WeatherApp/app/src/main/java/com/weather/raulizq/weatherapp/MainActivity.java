@@ -2,20 +2,13 @@ package com.weather.raulizq.weatherapp;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.TextView;
 
-
-import com.weather.raulizq.weatherapp.fragments.MultipleFragment;
-import com.weather.raulizq.weatherapp.fragments.TabFragment;
-import com.weather.raulizq.weatherapp.io.Data;
-import com.weather.raulizq.weatherapp.model.ServiceGenerator;
+import com.weather.raulizq.weatherapp.fragments.ForecastFragment;
+import com.weather.raulizq.weatherapp.fragments.CurrentFragment;
 
 import org.json.JSONObject;
 
@@ -23,13 +16,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInput;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,37 +32,20 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }*/
         setContentView(R.layout.activity_main);
-        ActionBar actionBar = getSupportActionBar();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //final TextView text = (TextView) findViewById(R.id.mylabel);
 
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        // Obtnemos nuestro ViewPager para ajustarlo al Adapter y poder interactuar
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new TabFragment(),"Current");
-        adapter.addFrag(new MultipleFragment(),"Forecast");
+        adapter.addFrag(new CurrentFragment(),"Current");
+        adapter.addFrag(new ForecastFragment(),"Forecast");
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         viewPager.setAdapter(adapter);
 
-        // Give the TabLayout the ViewPager
+        // Asignar al TabLayout el ViewPager
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-       Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(APPID,"Monterrey,mx");
-       //Call<Data> call = ServiceGenerator.getApiService().getData();
-        call.enqueue(new Callback<Data>() {
-            @Override
-            public void onResponse(Response<Data> response) {
-                Log.e("onResponse: ", String.valueOf(response.body().getName()));
-                //text.setText(response.body().getWeather().get(0).getDescription());
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
 
         //new NetworkTask(this).execute();
         //System.out.println(texto);
@@ -83,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+
+//Clase para realizar Request desde Android sin librerias
 class NetworkTask extends AsyncTask<AppCompatActivity, Integer, String> {
 
     AppCompatActivity layout;
