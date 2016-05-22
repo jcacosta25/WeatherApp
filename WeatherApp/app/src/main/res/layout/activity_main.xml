@@ -5,15 +5,16 @@
         android:layout_width="match_parent"
     android:orientation="vertical"
         android:layout_height="match_parent"
-        tools:context="com.weather.raulizq.weatherapp.MainActivity">
+        tools:context="com.weather.raulizq.weatherapp.MainActivity"
+        android:elevation="5dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content">
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout

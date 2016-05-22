@@ -18,4 +18,7 @@ public interface ApiService {
 
     @GET("forecast")
     Call<Data> getForecast(@Query("appid") String appid, @Query("q") String city,@Query("units") String unit);
+
+    @GET("weather")
+    Call<Data> getCurentLocationWeather(@Query("appid") String appid,@Query("lat") double lat,@Query("lon") double lon);
 }

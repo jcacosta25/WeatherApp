@@ -43,12 +43,13 @@ public class CurrentFragment extends Fragment {
         wind1 = (TextView) view.findViewById(R.id.windDeg);
         wind2 = (TextView) view.findViewById(R.id.windSpeed);
         condition = (ImageView) view.findViewById(R.id.condIcon);
-        request();
+        request("Tijuana","MX");
         return view;
     }
 
-    public void request(){
-        Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(MainActivity.APPID,"Monterrey,mx");
+    public void request(String ciudad, String country){
+        String p = ciudad+","+country;
+        Call<Data> call = ServiceGenerator.getApiService().getCurrentWeather(MainActivity.APPID,p);
         //Call<Data> call = ServiceGenerator.getApiService().getData();
         call.enqueue(new Callback<Data>() {
             @Override
@@ -71,5 +72,9 @@ public class CurrentFragment extends Fragment {
 
             }
         });
+    }
+
+    public void location(double lat, double lon){
+        Call<Data> call = ServiceGenerator.getApiService().getCurentLocationWeather(MainActivity.APPID,lat,lon);
     }
 }
